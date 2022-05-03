@@ -1,0 +1,17 @@
+@use 'sass:math';
+
+@function preferred-value($max-value){
+  @return #{ math.div( $max-value, 13.45895020188425302826 ) }vw;
+}
+
+@function convert-to-rem($px-value){
+  @return #{ math.div( $px-value, 10 ) }rem;
+}
+
+@function clamp-values($min-value, $max-value: false){
+  @if($max-value){
+    @return clamp(#{ convert-to-rem($min-value) }, #{ preferred-value($max-value) }, #{ convert-to-rem($max-value) })
+  } @else{
+    @return convert-to-rem($min-value);
+  }
+}

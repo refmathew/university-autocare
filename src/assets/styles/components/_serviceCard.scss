@@ -1,0 +1,37 @@
+@use '../abstracts/mixins' as mix;
+@use '../abstracts/var';
+
+.service-card__wrapper{
+  @include mix.flex(column, $align-items:center);
+}
+.service-card{
+  @include mix.flex(column, $align-items:center);
+  min-width: 26.1rem;
+  max-width: 26.1rem;
+
+  & > *:not(:last-child){
+    margin-bottom: .8rem;
+  }
+
+  &__icon{
+    display: inline-block;
+
+    svg{
+      color: var.$secondary;
+      @include mix.clamped(width, 83, 96);
+      @include mix.clamped(height, 83, 96);
+    }
+  }
+
+  &__title{
+    text-align: center;
+    color: var.$secondary;
+    @include mix.font("Open Sans", 20, $font-weight:600);
+  }
+
+  &__body{
+    text-align: center;
+    color: var.$secondary;
+    @include mix.font("Open Sans", 16);
+  }
+}

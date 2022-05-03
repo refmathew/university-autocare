@@ -1,0 +1,25 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+.layout--default {
+  .about-wrapper {
+  }
+
+  .about {
+    @include mix.clamped-shorthand-2(padding, 86, 200, 38, 295);
+
+    &__img {
+      @include mix.clamped(margin-top, 29, 64);
+      @include mix.clamped(margin-bottom, 29, 64);
+    }
+    &__paragraph {
+      color: var.$secondary;
+      text-align: center;
+      @include mix.font("Open Sans", 16, 24);
+
+      &:not(:first-child):not(:last-child) {
+        @include mix.clamped(margin-bottom, 29, 64);
+      }
+    }
+  }
+}

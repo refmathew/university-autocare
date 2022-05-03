@@ -1,0 +1,39 @@
+@use './functions' as fn;
+
+@mixin max-width__section{
+  margin: auto;
+  max-width: 144rem;
+}
+
+@mixin for-size($size) {
+  @if $size == tablet {
+    @media (min-width: 768px) { @content; }
+  } @else if $size == desktop{
+    @media (min-width: 1366px) { @content; }
+  } @else{
+    @media(min-width: #{$size}px){ @content; }
+  }
+}
+
+
+@mixin flex($flex-direction:row, $justify-content:initial, $align-items:initial){
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items
+}
+
+@mixin font($font-family, $font-size-min, $font-size-max: false, $font-weight: 400){
+    font-size: fn.clamp-values($font-size-min, $font-size-max);
+    font-family: $font-family, sans-serif;
+    font-weight: $font-weight
+}
+
+@mixin clamped($property, $min-value, $max-value){
+  #{$property}: fn.clamp-values($min-value, $max-value);
+}
+
+//fix this next project
+@mixin clamped-shorthand-2($property, $top-bottom-min-value, $top-bottom-max-value, $left-right-min-value, $left-right-max-value){
+  #{$property}: fn.clamp-values($top-bottom-min-value, $top-bottom-max-value) fn.clamp-values($left-right-min-value, $left-right-max-value);
+}

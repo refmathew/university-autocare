@@ -1,0 +1,15 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+*{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.page-section{
+  @include mix.max-width__section;
+}
+
+.unscrollable{
+  position: fixed;
+}

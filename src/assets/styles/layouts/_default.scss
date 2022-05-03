@@ -1,0 +1,420 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+// the wrappers
+.layout--default{
+  width: 100%;
+  min-width: 36rem;
+  min-height: 100vh;
+
+  .nav-wrapper{
+    position: fixed;
+    width: 100%;
+    z-index: 69;
+    transition: background-color 200ms ease-in-out;
+
+    &--scrolled{
+      background-color: var.$secondary-80;
+    }
+
+    .nav{
+      padding: 2.4rem;
+      @include mix.max-width__section;
+      @include mix.flex(column-reverse, flex-end, flex-end);
+      @include mix.for-size(998){
+        @include mix.flex(row, center, center);
+      }
+    }
+
+    .nav--active{
+      height: 100%;
+      background-color: var.$secondary-80;
+    }
+
+  }
+
+  .nav-wrapper--active{
+    position: absolute;
+    width: 100%;
+    z-index: 69;
+    height: 100vh;
+  }
+
+}
+
+
+// The Links
+.layout--default{
+
+  .nav{
+
+    &__links-wrapper{
+      display: none;
+      width: 100%;
+      max-width: 83.5rem;
+      height: 0;
+      margin: auto;
+      overflow: hidden;
+
+      @include mix.for-size(998){
+        @include mix.flex(row, space-between, center);
+        height: auto;
+        margin: 0;
+      }
+    }
+
+    &__links-wrapper--active{
+      @include mix.flex(column, $justify-content: center, $align-items: center);
+      animation: linksActive 400ms forwards;
+    }
+
+    &__links-wrapper--inactive{
+      animation: linksInactive 400ms forwards;
+    }
+
+    &__link{
+      color: var.$primary;
+      @include mix.font("Montserrat", 16);
+      @include mix.for-size(998){
+        margin-bottom: 0 !important;
+      }
+    }
+
+    &__link:not(:last-child){
+      margin-bottom: 2.4rem;
+    }
+
+
+    &__home{
+    }
+
+    &__about{
+    }
+
+    &__services{
+    }
+
+    &__blogs{
+    }
+
+    &__contact{
+      width: 12.4rem;
+      height: 4.8rem;
+      background-color: var.$accent;
+      border-radius: .8rem;
+      color: var.$secondary;
+      line-height: 4.8rem;
+      text-align: center;
+      @include mix.font("Montserrat", 16, $font-weight: 600);
+    }
+  }
+}
+
+@keyframes linksActive{
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 100%;
+  }
+}
+@keyframes linksInactive{
+  0%{
+    height: 100%;
+  }
+  100%{
+    height: 0;
+  }
+}
+
+
+
+.layout--default{
+
+  .nav{
+
+    &__burger-wrapper{
+      position: relative;
+    }
+
+    &__burger-line{
+      width: 3.2rem;
+      height: .25rem;
+      background-color: var.$primary;
+      border-radius: .2rem;
+
+      &:not( :last-child ){
+        margin-bottom: .6rem;
+      }
+    }
+
+    // handle click
+    &__burger-wrapper--active{
+
+      .line-one{
+        animation: burgerLineOneActive 400ms forwards;
+      }
+      .line-two{
+        animation: burgerLineTwoActive 400ms forwards;
+      }
+      .line-three{
+        animation: burgerLineThreeActive 400ms forwards;
+      }
+    }
+    &__burger-wrapper--inactive{
+
+      .line-one{
+        animation: burgerLineOneInactive 400ms forwards;
+      }
+      .line-two{
+        animation: burgerLineTwoInactive 400ms forwards;
+      }
+      .line-three{
+        animation: burgerLineThreeInactive 400ms forwards;
+      }
+    }
+
+    @include mix.for-size(998){
+      &__burger-wrapper{
+        display: none;
+      }
+    }
+  }
+}
+
+
+// HERO
+.layout--default{
+  .hero-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 80rem;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__overlay{
+      position: absolute;
+      background-color: var.$secondary-80;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      @include mix.flex(column, flex-end, center);
+
+      &__info{
+        position: absolute;
+        height: 100%;
+        @include mix.flex(column, center, center);
+      }
+      &__info--home-page{
+        @include mix.clamped(width, 277, 528);
+      }
+      &__logo{
+        width: 14.8rem;
+        height: 10.5rem;
+        margin-bottom: .8rem;
+      }
+      &__logo--home-page{
+        @include mix.clamped(width, 223.76, 416);
+        @include mix.clamped(height, 159.21, 296);
+        @include mix.clamped(margin-bottom, 16, 30);
+      }
+      &__text{
+        color: var.$primary;
+        text-align: center;
+        @include mix.font("Montserrat", 64, 96, 800);
+      }
+      &__text--home-page{
+        margin-bottom: 5.4rem;
+        @include mix.font("Montserrat", 18);
+      }
+      &__button{
+        display: none;
+      }
+      &__button--home-page{
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+
+// Footer
+.layout--default{
+
+  .footer-wrapper{
+    width: 100%;
+    background-color: var.$secondary;
+  }
+
+  .footer{
+    padding: 8.6rem 11.2rem;
+    margin: auto;
+    @include mix.max-width__section;
+    @include mix.for-size(1162){
+      padding: 7.8rem 12.2rem;
+      @include mix.flex($justify-content: space-between, $align-items: center);
+    }
+
+    .logo-wrapper{
+      width: 13.5rem;
+      margin: auto;
+      margin-bottom: 4.3rem;
+      @include mix.for-size(1162){
+        display: inline-block;
+        margin: 0;
+      }
+    }
+    &__logo{
+    }
+
+    .links-wrapper{
+      @include mix.for-size(1162){
+        flex: 1;
+        margin-left: 8.5rem;
+        @include mix.flex($flex-direction: row-reverse, $justify-content: space-between);
+      }
+    }
+
+    .native-links{
+      margin-bottom: 4.3rem;
+      @include  mix.flex(column, $align-items: center);
+      @include mix.for-size(1162){
+        flex: 1;
+        max-width: 49.4rem;
+        margin-bottom: 0;
+        margin-left: 8.5rem;
+        @include mix.flex($justify-content: space-between, $align-items: center);
+      }
+
+      &__link{
+        color: var.$primary;
+        @include mix.font("Open Sans", 16);
+
+        &:not(:last-child){
+          margin-bottom: 1.6rem;
+          @include mix.for-size(1162){
+            margin-bottom: 0;
+          }
+        }
+      }
+
+    }
+    .social-wrapper{
+      @include mix.flex($justify-content: center);
+    }
+    .social-links{
+      display: inline-block;
+      @include mix.for-size(1162){
+        @include mix.flex(column, $align-items: flex-start);
+      }
+
+      &__wrapper{
+        display: inline-block;
+        @include mix.for-size(1162){
+          @include mix.flex($align-items: center);
+        }
+        &:not(:last-child){
+          margin-right: 2.15rem;
+          @include mix.for-size(1162){
+            margin-right: 0;
+            margin-bottom: 1.6rem;
+          }
+        }
+      }
+      &__icon{
+        width: 2.4rem;
+        height: 2.4rem;
+        color: var.$primary;
+      }
+      &__name{
+        display: none;
+        color: var.$primary;
+        @include mix.for-size(1162){
+          display: inline-block;
+          margin-left: 1.6rem;
+          color: var.$primary;
+          @include mix.font("Open Sans", 16, $font-weight: 600);
+        }
+      }
+    }
+  }
+}
+
+@keyframes burgerLineOneActive{
+  0%{
+    transform: translateY(0) rotate(0deg);
+  }
+  50%{
+    transform: translateY(0.85rem) rotate(0deg);
+  }
+  100%{
+    transform: translateY(0.85rem) rotate(45deg);
+  }
+}
+@keyframes burgerLineOneInactive{
+  0%{
+    transform: translateY(0.85rem) rotate(45deg) ;
+  }
+  50%{
+    transform: translateY(0.85rem) rotate(0deg);
+  }
+  100%{
+    transform: rotate(0deg) translateY(0) ;
+  }
+
+}
+@keyframes burgerLineTwoActive{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+@keyframes burgerLineTwoInactive{
+  0%{
+    opacity: 0;
+  }
+  99%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+
+}
+@keyframes burgerLineThreeActive{
+  0%{
+    transform: translateY(0) rotate(0deg);
+  }
+  50%{
+    transform: translateY(-0.85rem) rotate(0deg);
+  }
+  100%{
+    transform: translateY(-0.85rem) rotate(-45deg);
+  }
+}
+@keyframes burgerLineThreeInactive{
+  0%{
+    transform: translateY(-0.85rem) rotate(-45deg);
+  }
+  50%{
+    transform: translateY(-0.85rem) rotate(0deg);
+  }
+  100%{
+    transform: translateY(0) rotate(0deg);
+  }
+}

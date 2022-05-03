@@ -1,0 +1,43 @@
+@use '../abstracts/var';
+@use '../abstracts/mixins' as mix;
+
+.contact-form{
+  @include mix.clamped( width, 284, 456 );
+
+  & > * {
+    width: 100%;
+    display: block;
+    border-radius: .8rem;
+    border: .4rem solid var.$secondary;
+  }
+
+  & > *:not( :nth-last-child(2) ){
+    height: 5.2rem;
+  }
+
+  & > *:not( :last-child ){
+    @include mix.font('Open Sans', 16, $font-weight: 600);
+    padding: 1.5rem 1.7rem;
+    margin-bottom: 2rem;
+  }
+
+  &__name{
+  }
+
+  &__email{
+
+  }
+
+  &__message{
+    height: 29rem;
+  }
+
+  &__submit{
+    background-color: var.$accent;
+    margin-bottom: 4.28rem;
+    @include mix.font('Montserrat', 18, $font-weight: 600);
+    @include mix.for-size(710){
+      margin-bottom: 0;
+    }
+  }
+}

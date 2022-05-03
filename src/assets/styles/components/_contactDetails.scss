@@ -1,0 +1,21 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+.contact-detail{
+  color: var.$secondary;
+  margin-bottom: 1.4rem;
+  min-width: 28.4rem;
+  @include mix.flex();
+
+  &__icon{
+  }
+  svg{
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+  &__details{
+    margin-left: 1.6rem;
+    display: inline-block;
+    @include mix.font( "Open Sans", 16, $font-weight: 600 );
+  }
+}
