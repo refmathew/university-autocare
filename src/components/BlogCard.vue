@@ -8,7 +8,7 @@
         <span class="blog-card__read-time">{{ ` ${blogReadTime} min read` }}</span>
       </div>
     </div>
-    <g-image class="blog-card__feature-img" :src="blogFeatureImg.src" />
+    <g-image class="blog-card__feature-img" :src="blogFeatureImg.src" alt="Blog feature image" />
   </g-link>
 </template>
 

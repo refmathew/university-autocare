@@ -41,6 +41,7 @@
             <g-image
               :src="bgName ? require('../assets/img/Logo.svg') : require('../assets/img/Logo-alt.svg')"
               :class="['nav__logo', { 'nav__logo--logo-shown': heroLogoInView === false }, { 'nav__logo-blog': !isHomePage }]"
+              alt="Business logo"
             />
           </g-link>
           <div
@@ -75,6 +76,7 @@
           <img
             :class="['hero__logo', { 'hero__logo--home-page': isHomePage }]"
             src="../assets/img/Logo.svg"
+            alt="Business logo"
           />
           <div
             v-if="headingText"
@@ -88,7 +90,7 @@
     <div class="footer-wrapper">
       <footer class="footer">
         <div class="logo-wrapper">
-          <img src="../assets/img/Logo.svg" alt class="logo" />
+          <img src="../assets/img/Logo.svg" alt="Business Logo" class="logo" />
         </div>
         <div class="links-wrapper">
           <div class="native-links">
