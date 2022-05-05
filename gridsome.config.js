@@ -4,6 +4,7 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const path = require('path')
+const autoprefixer = require("autoprefixer");
 
 function addStyleResource(rule) {
   rule.use('style-resource')
@@ -37,7 +38,14 @@ module.exports = {
       }
     }
   ],
-  transformers: {
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          autoprefixer()
+        ]
+      }
+    }
   }
 }
 
