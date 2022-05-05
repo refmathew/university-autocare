@@ -118,17 +118,17 @@ const serviceCardValues = [
 ]
 const testimonialCardValues = [
   {
-    imgSrc: "../assets/img/person-1.jpg",
+    imgSrc: "person-1.jpg",
     name: "John Doe",
     testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
   },
   {
-    imgSrc: "../assets/img/person-2.jpg",
+    imgSrc: "person-2.jpg",
     name: "John Tho",
     testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
   },
   {
-    imgSrc: "../assets/img/person-3.jpg",
+    imgSrc: "person-3.jpg",
     name: "John Dough",
     testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
   },
