@@ -3,6 +3,9 @@
 
 .blog-wrapper{
     @include mix.clamped(margin, 38, 122);
+    @include mix.for-size(1648){
+      margin: 12.2rem auto;
+    }
 
   .blog{
     max-width: 71rem;
