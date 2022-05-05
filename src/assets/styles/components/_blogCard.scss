@@ -26,7 +26,7 @@
   &__date{
     @include mix.font("Open Sans", 16, $font-weight:400);
   }
-  &__time-to-read{
+  &__read-time{
     @include mix.font("Open Sans", 16, $font-weight:400);
   }
   &__feature-img{

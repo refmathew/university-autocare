@@ -5,7 +5,7 @@
       <div class="blog-card__summary">{{ truncatedSumm }}</div>
       <div class="blog-card__meta-info">
         <span class="blog-card__date">{{ `${blogDate} &bull;` }}</span>
-        <span class="blog-card__time-to-read">{{ ` ${blogTimeToRead} min read` }}</span>
+        <span class="blog-card__read-time">{{ ` ${blogReadTime} min read` }}</span>
       </div>
     </div>
     <g-image class="blog-card__feature-img" :src="blogFeatureImg.src" />
@@ -18,7 +18,7 @@ export default {
     blogTitle: String,
     blogSummary: String,
     blogDate: String,
-    blogTimeToRead: Number,
+    blogReadTime: Number,
     blogFeatureImg: String,
     blogPath: String
   },

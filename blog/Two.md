@@ -1,10 +1,10 @@
 ---
 
 title: 'Maecenas bibendum dolor fames dolor massa, ullamcorperrr'
+readTime: 15
 date: 2020-02-21
 featureImg: './blog-2.jpg'
 summary: 'Dolor ea laborum illum natus necessitatibus aliquam magnam? Minima excepturi perferendis doloribus quod veniam ad Repellat reiciendis debitis quia dolorum perferendis error! Excepturi quaerat nam animi itaque sequi omnis blanditiis Sit necessitatibus porro sunt veritatis assumenda! Laboriosam eum aspernatur temporibus voluptates blanditiis ullam. Eos quasi ducimus aliquam libero autem. Eius eaque dolore minus accusantium quos ratione Culpa amet consequatur repellendus'
-timeToRead: '15 min read'
 
 ---
 

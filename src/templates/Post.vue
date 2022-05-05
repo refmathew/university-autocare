@@ -5,7 +5,7 @@
         <h1 class="blog__title">{{ $page.post.title }}</h1>
         <div class="blog__meta-info">
           <span class="blog__date">{{ `${$page.post.date} &bull; ` }}</span>
-          <span class="blog__time-to-read">{{ ` ${$page.post.timeToRead} min read` }}</span>
+          <span class="blog__time-to-read">{{ ` ${$page.post.readTime} min read` }}</span>
         </div>
         <g-image class="blog__feature-img" :src="$page.post.featureImg" />
         <div class="blog__content markdown-body" v-html="$page.post.content"></div>
@@ -22,7 +22,7 @@
           :blog-path="post.node.path"
           :blog-summary="post.node.summary"
           :blog-date="post.node.date"
-          :blog-time-to-read="post.node.timeToRead"
+          :blog-read-time="post.node.readTime"
           :blog-feature-img="post.node.featureImg"
         ></blog-card>
         </template>
@@ -38,7 +38,7 @@ query ($path: String!){
   post: post(path: $path){
     title
     date(format: "MMMM DD, YYYY")
-    timeToRead
+    readTime
     content
     featureImg
   }
@@ -49,7 +49,7 @@ query ($path: String!){
           path
           summary
           date(format: "MMMM DD, YYYY")
-          timeToRead
+          readTime
           featureImg
         }
       }

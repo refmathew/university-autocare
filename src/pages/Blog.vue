@@ -9,7 +9,7 @@
           :blog-path="post.node.path"
           :blog-summary="post.node.summary"
           :blog-date="post.node.date"
-          :blog-time-to-read="post.node.timeToRead"
+          :blog-read-time="post.node.readTime"
           :blog-feature-img="post.node.featureImg"
         ></blog-card>
       </section>
@@ -26,7 +26,7 @@
           title
           summary
           date(format: "MMMM DD, YYYY")
-          timeToRead
+          readTime
           featureImg
         }
       }

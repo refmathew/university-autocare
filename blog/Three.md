@@ -1,10 +1,10 @@
 ---
 
 title: 'Maecenas bibendum dolor fames dolor massa, ullamcorperr'
+readTime: 3
 date: 2000-01-10
 featureImg: './blog-3.jpg'
 summary: 'Amet saepe voluptate ad quos ex doloremque Vel minus molestias tempora fugit doloremque, veritatis Recusandae tempora enim quasi optio tempore veritatis quia. Earum pariatur perspiciatis deserunt doloribus vero. Vitae velit. Sit error autem et repellat vel minus Obcaecati in hic quod omnis obcaecati earum! Ducimus iure deserunt sapiente in voluptatibus necessitatibus! Accusamus beatae similique eligendi possimus delectus laborum. Numquam nihil'
-timeToRead: '3 min read'
 
 ---
 
