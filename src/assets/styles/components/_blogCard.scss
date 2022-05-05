@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as mix;
 
 .blog-card{
-  border: .4rem solid var.$secondary;
+  border: .3rem solid var.$secondary;
   border-radius: .8rem;
   @include mix.flex(column-reverse, space-between);
   @include mix.for-size( 900 ){
@@ -19,15 +19,15 @@
     @include mix.font("Montserrat", 30, 32, 900);
   }
   &__summary{
-    @include mix.font("Open Sans", 20, $font-weight:400);
+    @include mix.font("Open Sans", 14, 18, 400);
   }
   &__meta-info{
   }
   &__date{
-    @include mix.font("Open Sans", 16, $font-weight:400);
+    @include mix.font("Open Sans", 10, 16, 400);
   }
   &__read-time{
-    @include mix.font("Open Sans", 16, $font-weight:400);
+    @include mix.font("Open Sans", 10, 16, 400);
   }
   &__feature-img{
     @include mix.for-size(900){
