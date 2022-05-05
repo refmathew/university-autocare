@@ -28,7 +28,6 @@ module.exports = {
   titleTemplate: 'Car Center - %s',
   icon: './src/assets/img/Logo-alt.svg',
   plugins: [
-
     {
       use: '@gridsome/source-filesystem',
       options: {

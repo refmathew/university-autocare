@@ -6,6 +6,10 @@
   font-weight: 400;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 .page-section{
   @include mix.max-width__section;
 }

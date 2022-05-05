@@ -17,6 +17,11 @@
       background-color: var.$secondary-80;
     }
 
+    &--blog-template{
+      background-color: var.$primary-80;
+      position: static;
+    }
+
     .nav{
       padding: 2.4rem;
       @include mix.max-width__section;
@@ -31,6 +36,9 @@
       background-color: var.$secondary-80;
     }
 
+    .nav--blog-template{
+      background-color: var.$primary;
+    }
   }
 
   .nav-wrapper--active{
@@ -73,15 +81,19 @@
     }
 
     &__link{
-      color: var.$primary;
-      @include mix.font("Montserrat", 16);
       @include mix.for-size(998){
         margin-bottom: 0 !important;
       }
     }
 
     &__link:not(:last-child){
+      color: var.$primary;
+      @include mix.font("Montserrat", 16);
       margin-bottom: 2.4rem;
+    }
+
+    &__link--blog-template{
+      color: var.$secondary !important;
     }
 
 
@@ -95,17 +107,6 @@
     }
 
     &__blogs{
-    }
-
-    &__contact{
-      width: 12.4rem;
-      height: 4.8rem;
-      background-color: var.$accent;
-      border-radius: .8rem;
-      color: var.$secondary;
-      line-height: 4.8rem;
-      text-align: center;
-      @include mix.font("Montserrat", 16, $font-weight: 600);
     }
   }
 }
@@ -128,10 +129,30 @@
 }
 
 
-
+// HOME BUTTONS
 .layout--default{
 
   .nav{
+    &__home-buttons{
+      width: 100%;
+      @include mix.flex($justify-content: flex-end, $align-items: center);
+      @include mix.for-size(998){
+        display: none;
+      }
+    }
+    &__home-buttons--logo-shown{
+      justify-content: space-between;
+    }
+
+    &__logo{
+      width: 4.51rem;
+      height: 3.2rem;
+      display: none;
+    }
+
+    &__logo--logo-shown{
+      display: inline-block;
+    }
 
     &__burger-wrapper{
       position: relative;
@@ -146,6 +167,9 @@
       &:not( :last-child ){
         margin-bottom: .6rem;
       }
+    }
+    &__burger-line--blog-template{
+      background-color: var.$secondary;
     }
 
     // handle click

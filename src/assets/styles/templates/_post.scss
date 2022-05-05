@@ -1,0 +1,40 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+.blog-wrapper{
+
+  .blog{
+    max-width: 71rem;
+    margin: auto;
+    padding: 3.8rem;
+    text-align: center;
+    color: var.$secondary;
+
+    &__title{
+      margin-bottom: 1.2rem;
+      @include mix.font("Montserrat", 30, 48, 900);
+    }
+    &__meta-info{
+      margin-bottom: 4.1rem;
+    }
+    &__date{
+      @include mix.font("Open Sans", 10, 16, 400);
+
+    }
+    &__time-to-read{
+      @include mix.font("Open Sans", 10, 16, 400);
+
+    }
+    &__feature-img{
+      margin-bottom: 6.8rem;
+    }
+    &__content{
+      text-align: left;
+        @include mix.font("Open Sans", 16, 20, 400);
+
+      p{
+        @include mix.font("Open Sans", 16, 20, 400);
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@use "../abstracts/var";
+@use "../abstracts/mixins" as mix;
+
+.layout--default{
+
+  .blogs-wrapper{
+
+  }
+
+  .blogs{
+    @include mix.clamped(gap, 18, 64);
+    @include mix.clamped-shorthand-2(padding, 25, 100, 38, 122);
+    @include mix.flex(column);
+  }
+}

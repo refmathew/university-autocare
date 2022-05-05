@@ -8,8 +8,13 @@
 @use "./components/contactDetails";
 @use "./components/contactForm";
 @use "./components/contactButton";
+@use "./components/blogCard";
+@use "./components/markdown";
 
 @use "./layouts/default";
 
+@use "./templates/post";
+
 @use "./pages/index";
 @use "./pages/about";
+@use "./pages/blog";

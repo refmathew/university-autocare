@@ -1,36 +1,72 @@
 <template>
   <div :class="['layout--default', { 'unscrollable': burgerMenuActive === true }]">
-    <div :class="['nav-wrapper', { 'nav-wrapper--active': burgerMenuActive === true }]">
-      <nav :class="['nav', { ' nav--active': burgerMenuActive === true }]">
+    <div
+      :class="['nav-wrapper', { 'nav-wrapper--active': burgerMenuActive === true }, { 'nav-wrapper--blog-template': !bgName }]"
+    >
+      <nav
+        :class="['nav', { ' nav--active': burgerMenuActive === true }, { 'nav--blog-template': !bgName }]"
+      >
         <div
           :class="[
             'nav__links-wrapper',
             { 'nav__links-wrapper--active': burgerMenuActive === true },
             { 'nav__links-wrapper--inactive': burgerMenuActive === false },
           ]"
+          @click="handleLinkClick"
         >
-          <g-link class="nav__link nav__home" to="/">HOME</g-link>
-          <g-link class="nav__link nav__about" to="/about/">ABOUT</g-link>
-          <a href="/#services" class="nav__link nav__services" to="/services/">SERVICES</a>
-          <g-link class="nav__link nav__blogs" to="/blog/">BLOGS</g-link>
-          <contact-button></contact-button>
+          <g-link
+            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__home']"
+            to="/"
+          >HOME</g-link>
+          <g-link
+            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__about']"
+            to="/about/"
+          >ABOUT</g-link>
+          <a
+            href="/#services"
+            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__services']"
+            to="/services/"
+          >SERVICES</a>
+          <g-link
+            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__blogs']"
+            to="/blog/"
+          >BLOGS</g-link>
+          <contact-button :class="[{ 'nav__link--blog-template': !bgName }]"></contact-button>
         </div>
         <div
-          :class="[
-            'nav__burger-wrapper',
-            { 'nav__burger-wrapper--active': burgerMenuActive === true },
-            { 'nav__burger-wrapper--inactive': burgerMenuActive === false }
-          ]"
-          @click.stop="handleBurgerClick"
+          :class="['nav__home-buttons', { 'nav__home-buttons--logo-shown': heroLogoInView === false }]"
         >
-          <div class="nav__burger-line line-one"></div>
-          <div class="nav__burger-line line-two"></div>
-          <div class="nav__burger-line line-three"></div>
+          <g-link to="/">
+            <!-- bgName? checks whether the page is a normal page or a blog-post page-->
+            <g-image
+              :src="bgName ? require('../assets/img/Logo.svg') : require('../assets/img/Logo-alt.svg')"
+              :class="['nav__logo', { 'nav__logo--logo-shown': heroLogoInView === false }, { 'nav__logo-blog': !isHomePage }]"
+            />
+          </g-link>
+          <div
+            :class="[
+              'nav__burger-wrapper',
+              { 'nav__burger-wrapper--active': burgerMenuActive === true },
+              { 'nav__burger-wrapper--inactive': burgerMenuActive === false }
+            ]"
+            @click.stop="handleBurgerClick"
+          >
+            <div
+              :class="['nav__burger-line', 'line-one', { 'nav__burger-line--blog-template': !bgName }]"
+            ></div>
+            <div
+              :class="['nav__burger-line', 'line-two', { 'nav__burger-line--blog-template': !bgName }]"
+            ></div>
+            <div
+              :class="['nav__burger-line', 'line-three', { 'nav__burger-line--blog-template': !bgName }]"
+            ></div>
+          </div>
         </div>
       </nav>
     </div>
     <div
       class="hero-wrapper"
+      v-if="bgName"
       :style="{ 'background-image': 'url(' + require(`../assets/img/${bgName}`) + ')' }"
     >
       <div class="hero-wrapper__overlay"></div>
@@ -40,7 +76,10 @@
             :class="['hero__logo', { 'hero__logo--home-page': isHomePage }]"
             src="../assets/img/Logo.svg"
           />
-          <div :class="['hero__text', { 'hero__text--home-page': isHomePage }]">{{ headingText }}</div>
+          <div
+            v-if="headingText"
+            :class="['hero__text', { 'hero__text--home-page': isHomePage }]"
+          >{{ headingText }}</div>
           <contact-button :class="['hero__button', { 'hero__button--home-page': isHomePage }]"></contact-button>
         </div>
       </div>
@@ -55,7 +94,7 @@
           <div class="native-links">
             <g-link class="native-links__link native-links__home" to="/">Home</g-link>
             <g-link class="native-links__link native-links__about" to="/about/">About</g-link>
-            <g-link class="native-links__link native-links__services" to="/services/">Services</g-link>
+            <g-link class="native-links__link native-links__services" to="/#services/">Services</g-link>
             <g-link class="native-links__link native-links__blogs" to="/blog/">Blogs</g-link>
             <contact-button></contact-button>
           </div>
@@ -102,6 +141,7 @@ export default {
   data() {
     return {
       burgerMenuActive: undefined,
+      heroLogoInView: undefined
     }
   },
   computed: {
@@ -113,9 +153,24 @@ export default {
     handleBurgerClick() {
       this.burgerMenuActive = !this.burgerMenuActive
     },
+    handleLinkClick(e) {
+      if (e.target.classList.contains('nav__link')) {
+        this.burgerMenuActive = false
+      }
+    },
+    checkHeroLogoVisibility(hero) {
+      window.addEventListener('scroll', () => {
+        const rect = hero.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+        const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+        const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+        const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+        return this.heroLogoInView = vertInView && horInView
+      })
+    },
     calculateDistance() {
       const nav = document.querySelector('.nav-wrapper')
-      window.addEventListener('scroll', () => {
+      window.addEventListener('scroll', (e) => {
         if (window.scrollY > 114) {
           if (nav.classList.contains('nav-wrapper--scrolled')) return
           return nav.classList.add('nav-wrapper--scrolled');
@@ -124,10 +179,26 @@ export default {
         if (!nav.classList.contains('nav-wrapper--scrolled')) return
         nav.classList.remove('nav-wrapper--scrolled')
       })
+    },
+  },
+  watch: {
+    heroLogoInView: function (newVal) {
+      const nav = document.querySelector('.nav-wrapper')
+      if (newVal === false) {
+        if (nav.classList.contains('nav-wrapper--scrolled')) return
+        return nav.classList.add('nav-wrapper--scrolled');
+      }
+      if (!nav.classList.contains('nav-wrapper--scrolled')) return
+      nav.classList.remove('nav-wrapper--scrolled')
     }
   },
   mounted() {
-    this.calculateDistance()
+    const heroSection = document.querySelector('.hero')
+    if (!heroSection) {
+      return this.heroLogoInView = false
+    } else {
+      this.checkHeroLogoVisibility(heroSection)
+    }
   }
 }
 </script>

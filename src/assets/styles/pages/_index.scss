@@ -1,9 +1,6 @@
 @use '../abstracts/var';
 @use '../abstracts/mixins' as mix;
 
-html{
-  scroll-behavior: smooth;
-}
 .layout--default{
 
   .services-wrapper{
