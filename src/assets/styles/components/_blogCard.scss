@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as mix;
 
 .blog-card{
-  border: .3rem solid var.$secondary;
+  border: .2rem solid var.$secondary;
   border-radius: .8rem;
   @include mix.flex(column-reverse, space-between);
   @include mix.for-size( 900 ){
