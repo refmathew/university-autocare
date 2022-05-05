@@ -8,12 +8,12 @@
       <div class="services page-section">
         <div class="services__heading">What we offer</div>
         <div class="services__main">
-          <div v-for="serviceCard in serviceCardValues" class="service-card__wrapper">
+          <div v-for="service in $page.services.edges" class="service-card__wrapper">
             <service-card
-              :key="serviceCard.title"
-              :icon-name="serviceCard.iconName"
-              :title="serviceCard.title"
-              :body="serviceCard.body"
+              :key="service.node.title"
+              :name="service.node.name"
+              :fa-icon="service.node.faIcon"
+              :def="service.node.def"
             ></service-card>
           </div>
         </div>
@@ -73,54 +73,28 @@
   </Layout>
 </template>
 
+
 <page-query>
-query Post {
-  allPost {
+query {
+  services: allService {
     edges{
       node{
-        path
-        title
-        date
-        content
+        name
+        faIcon
+        def
       }
     }
   }
 }
 </page-query>
+
+
 <script>
 import ServiceCard from '../components/ServiceCard.vue'
 import TestimonialCard from '../components/TestimonialCard.vue'
 import ContactDetail from '../components/ContactDetail.vue'
 import ContactForm from '../components/ContactForm.vue'
 
-const serviceCardValues = [
-  {
-    iconName: 'cog',
-    title: 'Tempus pellentesque volutpat',
-    body: 'Suspendisse eget pretium lectus proin id interdum. Nibh cursus metus sit quam nisi, tortor augue malesuada vitae.'
-
-  },
-  {
-    iconName: 'cog',
-    title: 'Tempus pellentesque volutpat',
-    body: 'Suspendisse eget pretium lectus proin id interdum. Nibh cursus metus sit quam nisi, tortor augue malesuada vitae.'
-  },
-  {
-    iconName: 'cog',
-    title: 'Tempus pellentesque volutpat',
-    body: 'Suspendisse eget pretium lectus proin id interdum. Nibh cursus metus sit quam nisi, tortor augue malesuada vitae.'
-  },
-  {
-    iconName: 'cog',
-    title: 'Tempus pellentesque volutpat',
-    body: 'Suspendisse lslseget pretium lectus proin id interdum. Nibh cursus metus sit quam nisi, tortor augue malesuada vitae.'
-  },
-  {
-    iconName: 'cog',
-    title: 'Tempus pellentesque volutpat',
-    body: 'dlkfSuspendisse eget pretium lectus proin id interdum. Nibh cursus metus sit quam nisi, tortor augue malesuada vitae.'
-  },
-]
 const testimonialCardValues = [
   {
     imgSrc: "person-1.jpg",
@@ -157,7 +131,6 @@ const contactDetails = [
 export default {
   data() {
     return {
-      serviceCardValues,
       testimonialCardValues,
       socialLinks,
       contactDetails,

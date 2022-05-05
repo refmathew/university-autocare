@@ -1,19 +1,19 @@
 <template>
   <div class="service-card">
     <div class="service-card__icon">
-      <font-awesome :icon="['fas', iconName]"></font-awesome>
+      <font-awesome :icon="['fas', faIcon]"></font-awesome>
     </div>
-    <div class="service-card__title">{{ title }}</div>
-    <div class="service-card__body">{{ body }}</div>
+    <div class="service-card__title">{{ name }}</div>
+    <div class="service-card__body">{{ def }}</div>
   </div>
 </template>
 
  <script >
 export default {
   props: {
-    iconName: String,
-    title: String,
-    body: String,
+    name: String,
+    faIcon: String,
+    def: String,
   }
 }
 </script>
