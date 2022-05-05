@@ -10,20 +10,24 @@
         <g-image class="blog__feature-img" :src="$page.post.featureImg" alt="Blog feature image" />
         <div class="blog__content markdown-body" v-html="$page.post.content"></div>
       </main>
-      <hr />
       <section class="blog-roll page-section">
-        <template v-for="post in $page.allPost.edges">
-          <blog-card
-            v-if="$page.post.title != post.node.title"
-            :key="post.node.title"
-            :blog-title="post.node.title"
-            :blog-path="post.node.path"
-            :blog-summary="post.node.summary"
-            :blog-date="post.node.date"
-            :blog-read-time="post.node.readTime"
-            :blog-feature-img="post.node.featureImg"
-          ></blog-card>
-        </template>
+        <hr class="blog-roll__hr" />
+        <h2 class="blog-roll__heading">Read Next</h2>
+        <div class="blog-roll__blog-cards">
+          <template v-for="post in $page.allPost.edges">
+            <blog-card
+              v-if="$page.post.title != post.node.title"
+              class="blog-roll__blog-card"
+              :key="post.node.title"
+              :blog-title="post.node.title"
+              :blog-path="post.node.path"
+              :blog-summary="post.node.summary"
+              :blog-date="post.node.date"
+              :blog-read-time="post.node.readTime"
+              :blog-feature-img="post.node.featureImg"
+            ></blog-card>
+          </template>
+        </div>
       </section>
     </div>
   </Layout>

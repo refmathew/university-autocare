@@ -2,11 +2,11 @@
 @use "../abstracts/mixins" as mix;
 
 .blog-wrapper{
+    @include mix.clamped(margin, 38, 122);
 
   .blog{
     max-width: 71rem;
     margin: auto;
-    padding: 3.8rem;
     text-align: center;
     color: var.$secondary;
 
@@ -35,6 +35,30 @@
       p{
         @include mix.font("Open Sans", 16, 20, 400);
       }
+    }
+  }
+}
+
+.blog-wrapper{
+  .blog-roll{
+    color: var.$secondary;
+
+    &__hr{
+      border: .1rem solid var.$secondary; 
+      border-radius: .1rem;
+      @include mix.clamped(margin-top, 38, 122);
+      @include mix.clamped(margin-bottom, 38, 122);
+    }
+    &__heading{
+      margin-bottom: 3.2rem;
+      @include mix.font("Montserrat", 36, 40, 900);
+    }
+    &__blog-cards{
+      @include mix.flex(column);
+      @include mix.clamped(gap, 18, 64);
+    }
+    &__blog-card{
+
     }
   }
 }
