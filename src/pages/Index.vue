@@ -53,9 +53,14 @@
             </div>
             <div class="contact__hr"></div>
             <div class="contact__socials">
-              <div v-for="socialIcon of socialIcons" class="contact__social-icon">
-                <font-awesome :key="socialIcon" :icon="['fab', socialIcon]"></font-awesome>
-              </div>
+              <a
+                v-for="socialLink of socialLinks"
+                :href="`https://${socialLink.link}`"
+                target="_blank"
+                class="contact__social-icon"
+              >
+                <font-awesome :key="socialLink" :icon="['fab', socialLink.icon]"></font-awesome>
+              </a>
             </div>
           </div>
           <div class="contact__right">
@@ -133,7 +138,7 @@ const testimonialCardValues = [
     testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
   },
 ]
-const socialIcons = ["twitter", "instagram", "facebook-f"]
+const socialLinks = [{ icon: "twitter", link: "twitter.com/" }, { icon: "instagram", link: "instagram.com/" }, { icon: "facebook-f", link: "facebook.com/" }]
 const contactDetails = [
   {
     iconName: 'compass',
@@ -154,7 +159,7 @@ export default {
     return {
       serviceCardValues,
       testimonialCardValues,
-      socialIcons,
+      socialLinks,
       contactDetails,
     }
   },

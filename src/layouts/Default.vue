@@ -103,34 +103,17 @@
           <div class="social-wrapper">
             <div class="social-links">
               <a
-                href="https://twitter.com"
-                class="social-links__wrapper social-links__twitter-wrapper"
+                v-for="socialLink of socialLinks"
+                :href="`https://${socialLink.link}`"
+                target="_blank"
+                class="social-links__wrapper"
               >
                 <font-awesome
-                  class="social-links__icon social-links__twitter-icon"
-                  :icon="['fab', 'twitter']"
+                  :key="socialLink"
+                  :icon="['fab', socialLink.icon]"
+                  class="social-links__icon"
                 ></font-awesome>
-                <div class="social-links__name social-links__twitter-name">Twitter</div>
-              </a>
-              <a
-                href="https://instagram.com"
-                class="social-links__wrapper social-links__instagram-wrapper"
-              >
-                <font-awesome
-                  class="social-links__icon social-links__instagram-icon"
-                  :icon="['fab', 'instagram']"
-                ></font-awesome>
-                <div class="social-links__name social-links__instagram-name">Instagram</div>
-              </a>
-              <a
-                href="https://facebook.com"
-                class="social-links__wrapper social-links__facebook-wrapper"
-              >
-                <font-awesome
-                  class="social-links__icon social-links__facebook-icon"
-                  :icon="['fab', 'facebook-f']"
-                ></font-awesome>
-                <div class="social-links__name social-links__facebook-name">Facebook</div>
+                <div class="social-links__name">{{ socialLink.name }}</div>
               </a>
             </div>
           </div>
@@ -143,6 +126,7 @@
 <script >
 import ContactButton from '@/components/ContactButton.vue'
 
+const socialLinks = [{ name: "Twitter", icon: "twitter", link: "twitter.com/" }, { name: "Instagram", icon: "instagram", link: "instagram.com/" }, { name: "Facebook", icon: "facebook-f", link: "facebook.com/" }]
 export default {
   props: {
     isHomePage: Boolean,
@@ -152,7 +136,8 @@ export default {
   data() {
     return {
       burgerMenuActive: undefined,
-      heroLogoInView: undefined
+      heroLogoInView: undefined,
+      socialLinks
     }
   },
   computed: {
