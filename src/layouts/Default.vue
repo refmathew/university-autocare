@@ -86,7 +86,9 @@
         </div>
       </div>
     </div>
+
     <slot />
+
     <div class="footer-wrapper">
       <footer class="footer">
         <div class="logo-wrapper">
@@ -141,9 +143,15 @@ import ContactButton from '@/components/ContactButton.vue'
 
 export default {
   props: {
-    isHomePage: Boolean,
+    isHomePage: {
+      type: Boolean,
+      default: false
+    },
     headingText: String,
-    bgName: String
+    bgName: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
