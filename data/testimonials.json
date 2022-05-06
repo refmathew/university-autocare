@@ -1,0 +1,17 @@
+[
+  {
+    "name": "John Doe",
+    "imgSrc": "person-1.jpg",
+    "testimony": "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
+  },
+  {
+    "name": "John Tho",
+    "imgSrc": "person-2.jpg",
+    "testimony": "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
+  },
+  {
+    "name": "John Dough",
+    "imgSrc": "person-3.jpg",
+    "testimony": "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
+  }
+]

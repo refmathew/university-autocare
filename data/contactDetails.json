@@ -1,0 +1,14 @@
+[
+  {
+    "faIcon": "compass",
+    "details": "4517 Washington Ave. Manchester, Kentucky 39495"
+  },
+  {
+    "faIcon": "clock-four",
+    "details": "Mon - Fri: 8am - 7pm<br/>Saturday: Closed<br/>Sunday: 8am - 7pm"
+  },
+  {
+    "faIcon": "phone",
+    "details": "(480) 555-0103"
+  }
+]

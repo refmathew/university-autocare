@@ -31,7 +31,16 @@
         }
       }
     }
-  }
+    socials: allSocial{
+      edges{
+        node{
+          name
+          link
+          faIcon
+        }
+      }
+    }
+}
 </page-query>
 
 <script>

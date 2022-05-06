@@ -28,11 +28,11 @@
           >Turpis malesuada scelerisque nam quis adipiscing vitae.Venenatis vitae id amet vel dictum. Aenean ullamcorper urna mi neque semper. Donec pulvinar consequat faucibus sed orci.</div>
           <div class="testimonials__main">
             <testimonial-card
-              v-for="testimonialCard in testimonialCardValues"
-              :key="testimonialCard.name"
-              :img-src="testimonialCard.imgSrc"
-              :name="testimonialCard.name"
-              :testimony="testimonialCard.testimony"
+              v-for="testimonial in $page.testimonials.edges"
+              :key="testimonial.node.name"
+              :name="testimonial.node.name"
+              :img-src="testimonial.node.imgSrc"
+              :testimony="testimonial.node.testimony"
             ></testimonial-card>
           </div>
         </div>
@@ -45,21 +45,21 @@
           <div class="contact__left">
             <div class="contact__details">
               <contact-detail
-                v-for="contactDetail in contactDetails"
-                :key="contactDetail.iconName"
-                :icon-name="contactDetail.iconName"
-                :details="contactDetail.details"
+                v-for="contactDetail of $page.contactDetails.edges"
+                :key="contactDetail.node.iconName"
+                :fa-icon="contactDetail.node.faIcon"
+                :details="contactDetail.node.details"
               ></contact-detail>
             </div>
             <div class="contact__hr"></div>
             <div class="contact__socials">
               <a
-                v-for="socialLink of socialLinks"
-                :href="`https://${socialLink.link}`"
+                v-for="social of $page.socials.edges"
+                :href="`https://${social.node.link}`"
                 target="_blank"
                 class="contact__social-icon"
               >
-                <font-awesome :key="socialLink" :icon="['fab', socialLink.icon]"></font-awesome>
+                <font-awesome :key="social.node.link" :icon="['fab', social.node.faIcon]"></font-awesome>
               </a>
             </div>
           </div>
@@ -85,6 +85,32 @@ query {
       }
     }
   }
+  testimonials: allTestimonial{
+    edges{
+      node{
+        name
+        imgSrc
+        testimony
+      }
+    }
+  }
+  socials: allSocial{
+    edges{
+      node{
+        name
+        link
+        faIcon
+      }
+    }
+  }
+  contactDetails: allContactDetail{
+    edges{
+      node{
+        details
+        faIcon
+      }
+    }
+  }
 }
 </page-query>
 
@@ -95,47 +121,7 @@ import TestimonialCard from '../components/TestimonialCard.vue'
 import ContactDetail from '../components/ContactDetail.vue'
 import ContactForm from '../components/ContactForm.vue'
 
-const testimonialCardValues = [
-  {
-    imgSrc: "person-1.jpg",
-    name: "John Doe",
-    testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
-  },
-  {
-    imgSrc: "person-2.jpg",
-    name: "John Tho",
-    testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
-  },
-  {
-    imgSrc: "person-3.jpg",
-    name: "John Dough",
-    testimony: "Ut enim fermentum egestas adipiscing volutpat. Volutpat faucibus id vel cursus habitant magna turpis placerat orci. Posuere massa facilisi consequat, eget ornare tempor congue faucibus gravida. Id eu, faucibus ullamcorpe eu, pulvinar."
-  },
-]
-const socialLinks = [{ icon: "twitter", link: "twitter.com/" }, { icon: "instagram", link: "instagram.com/" }, { icon: "facebook-f", link: "facebook.com/" }]
-const contactDetails = [
-  {
-    iconName: 'compass',
-    details: '4517 Washington Ave. Manchester, Kentucky 39495'
-  },
-  {
-    iconName: 'clock-four',
-    details: 'Mon - Fri: 8am - 7pm<br/>Saturday: Closed<br/>Sunday: 8am - 7pm'
-  },
-  {
-    iconName: 'phone',
-    details: '(480) 555-0103'
-  },
-]
-
 export default {
-  data() {
-    return {
-      testimonialCardValues,
-      socialLinks,
-      contactDetails,
-    }
-  },
   components: {
     ServiceCard,
     TestimonialCard,

@@ -1,0 +1,5 @@
+[
+  { "name": "Twitter", "faIcon": "twitter", "link": "twitter.com/" },
+  { "name": "Instagram", "faIcon": "instagram", "link": "instagram.com/" }, 
+  { "name": "Facebook", "faIcon": "facebook-f", "link": "facebook.com/" }
+]

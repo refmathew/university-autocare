@@ -19,6 +19,20 @@
   </Layout>
 </template>
 
+<page-query>
+  query{
+    socials: allSocial{
+      edges{
+        node{
+          name
+          link
+          faIcon
+        }
+      }
+    }
+  }
+</page-query>
+
 <script>
 export default {
   metaInfo: {

@@ -103,17 +103,14 @@
           <div class="social-wrapper">
             <div class="social-links">
               <a
-                v-for="socialLink of socialLinks"
-                :href="`https://${socialLink.link}`"
+                v-for="social in $page.socials.edges"
+                :key="social.node.faIcon"
+                :href="`https://${social.node.link}`"
                 target="_blank"
                 class="social-links__wrapper"
               >
-                <font-awesome
-                  :key="socialLink"
-                  :icon="['fab', socialLink.icon]"
-                  class="social-links__icon"
-                ></font-awesome>
-                <div class="social-links__name">{{ socialLink.name }}</div>
+                <font-awesome :icon="['fab', social.node.faIcon]" class="social-links__icon"></font-awesome>
+                <div class="social-links__name">{{ social.node.name }}</div>
               </a>
             </div>
           </div>
@@ -123,10 +120,25 @@
   </div>
 </template>
 
+
+<page-query>
+  query Post {
+    socials: allSocial {
+      edges{
+        node{
+          name
+          faIcon
+          link
+        }
+      }
+    }
+  }
+</page-query>
+
+
 <script >
 import ContactButton from '@/components/ContactButton.vue'
 
-const socialLinks = [{ name: "Twitter", icon: "twitter", link: "twitter.com/" }, { name: "Instagram", icon: "instagram", link: "instagram.com/" }, { name: "Facebook", icon: "facebook-f", link: "facebook.com/" }]
 export default {
   props: {
     isHomePage: Boolean,
@@ -137,7 +149,6 @@ export default {
     return {
       burgerMenuActive: undefined,
       heroLogoInView: undefined,
-      socialLinks
     }
   },
   computed: {

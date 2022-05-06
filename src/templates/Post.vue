@@ -43,17 +43,26 @@ query ($path: String!){
     featureImg
   }
   allPost: allPost(sortBy:"date") {
-      edges{
-        node{
-          title
-          path
-          summary
-          date(format: "MMMM DD, YYYY")
-          readTime
-          featureImg
-        }
+    edges{
+      node{
+        title
+        path
+        summary
+        date(format: "MMMM DD, YYYY")
+        readTime
+        featureImg
       }
     }
+  }
+  socials: allSocial{
+    edges{
+      node{
+        name
+        link
+        faIcon
+      }
+    }
+  }
 }
 
 </page-query>
