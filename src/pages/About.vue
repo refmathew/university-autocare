@@ -37,6 +37,9 @@
 export default {
   metaInfo: {
     title: 'About us'
+  },
+  mounted() {
+    document.documentElement.scrollTop = 0;
   }
 }
 </script>

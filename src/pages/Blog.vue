@@ -52,6 +52,9 @@ export default {
   },
   metaInfo: {
     title: 'Blogs'
+  },
+  mounted(){
+    document.documentElement.scrollTop = 0;
   }
 }
 </script>

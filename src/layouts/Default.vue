@@ -80,15 +80,15 @@
     <div class="footer-wrapper">
       <footer class="footer">
         <div class="logo-wrapper">
-          <img src="../assets/img/Logo.svg" alt="Business Logo" class="logo" />
+          <img @click="scrollToTop" src="../assets/img/Logo.svg" alt="Business Logo" class="logo" />
         </div>
         <div class="links-wrapper">
           <div class="native-links">
             <g-link
               v-for="sitePage in sitePages"
               :key="sitePage.name"
-              class="native-links__link"
               :to="sitePage.link"
+              class="native-links__link"
             >{{ sitePage.name }}</g-link>
             <contact-button></contact-button>
           </div>
@@ -199,6 +199,9 @@ export default {
         nav.classList.remove('nav-wrapper--scrolled')
       })
     },
+    scrollToTop() {
+      document.documentElement.scrollTop = 0;
+    }
   },
   watch: {
     heroLogoInView: function (newVal) {
