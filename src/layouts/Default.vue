@@ -15,22 +15,10 @@
           @click="closeMenu"
         >
           <g-link
-            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__home']"
-            to="/"
-          >HOME</g-link>
-          <g-link
-            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__about']"
-            to="/about/"
-          >ABOUT</g-link>
-          <a
-            href="/#services"
-            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__services']"
-            to="/services/"
-          >SERVICES</a>
-          <g-link
-            :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__blogs']"
-            to="/blog/"
-          >BLOG</g-link>
+            v-for="sitePage in sitePages"
+            :class="['nav__link', { 'nav__link--blog-template': !bgName }]"
+            :to="sitePage.link"
+          >{{ sitePage.name.toUpperCase() }}</g-link>
           <contact-button :class="[{ 'nav__link--blog-template': !bgName }]"></contact-button>
         </div>
         <div
@@ -96,10 +84,12 @@
         </div>
         <div class="links-wrapper">
           <div class="native-links">
-            <g-link class="native-links__link native-links__home" to="/">Home</g-link>
-            <g-link class="native-links__link native-links__about" to="/about/">About</g-link>
-            <g-link class="native-links__link native-links__services" to="/#services/">Services</g-link>
-            <g-link class="native-links__link native-links__blogs" to="/blog/">Blog</g-link>
+            <g-link
+              v-for="sitePage in sitePages"
+              :key="sitePage.name"
+              class="native-links__link"
+              :to="sitePage.link"
+            >{{ sitePage.name }}</g-link>
             <contact-button></contact-button>
           </div>
           <div class="social-wrapper">
@@ -142,6 +132,9 @@
 import ContactButton from '@/components/ContactButton.vue'
 
 export default {
+  components: {
+    ContactButton
+  },
   props: {
     isHomePage: {
       type: Boolean,
@@ -157,12 +150,25 @@ export default {
     return {
       isMenuActive: undefined,
       heroLogoInView: undefined,
+      sitePages: [
+        {
+          name: "Home",
+          link: "/"
+        },
+        {
+          name: "About",
+          link: "/about"
+        },
+        {
+          name: "Services",
+          link: "/#services"
+        },
+        {
+          name: "Blog",
+          link: "/blog"
+        },
+      ]
     }
-  },
-  computed: {
-  },
-  components: {
-    ContactButton
   },
   methods: {
     handleBurgerClick() {
