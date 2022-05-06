@@ -30,7 +30,7 @@
           <g-link
             :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__blogs']"
             to="/blog/"
-          >BLOGS</g-link>
+          >BLOG</g-link>
           <contact-button :class="[{ 'nav__link--blog-template': !bgName }]"></contact-button>
         </div>
         <div
@@ -97,7 +97,7 @@
             <g-link class="native-links__link native-links__home" to="/">Home</g-link>
             <g-link class="native-links__link native-links__about" to="/about/">About</g-link>
             <g-link class="native-links__link native-links__services" to="/#services/">Services</g-link>
-            <g-link class="native-links__link native-links__blogs" to="/blog/">Blogs</g-link>
+            <g-link class="native-links__link native-links__blogs" to="/blog/">Blog</g-link>
             <contact-button></contact-button>
           </div>
           <div class="social-wrapper">
