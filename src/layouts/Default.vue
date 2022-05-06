@@ -1,18 +1,18 @@
 <template>
-  <div :class="['layout--default', { 'unscrollable': burgerMenuActive === true }]">
+  <div :class="['layout--default', { 'unscrollable': isMenuActive === true }]">
     <div
-      :class="['nav-wrapper', { 'nav-wrapper--active': burgerMenuActive === true }, { 'nav-wrapper--blog-template': !bgName }]"
+      :class="['nav-wrapper', { 'nav-wrapper--active': isMenuActive === true }, { 'nav-wrapper--blog-template': !bgName }]"
     >
       <nav
-        :class="['nav', { ' nav--active': burgerMenuActive === true }, { 'nav--blog-template': !bgName }]"
+        :class="['nav', { ' nav--active': isMenuActive === true }, { 'nav--blog-template': !bgName }]"
       >
         <div
           :class="[
             'nav__links-wrapper',
-            { 'nav__links-wrapper--active': burgerMenuActive === true },
-            { 'nav__links-wrapper--inactive': burgerMenuActive === false },
+            { 'nav__links-wrapper--active': isMenuActive === true },
+            { 'nav__links-wrapper--inactive': isMenuActive === false },
           ]"
-          @click="handleLinkClick"
+          @click="closeMenu"
         >
           <g-link
             :class="['nav__link', { 'nav__link--blog-template': !bgName }, 'nav__home']"
@@ -47,8 +47,8 @@
           <div
             :class="[
               'nav__burger-wrapper',
-              { 'nav__burger-wrapper--active': burgerMenuActive === true },
-              { 'nav__burger-wrapper--inactive': burgerMenuActive === false }
+              { 'nav__burger-wrapper--active': isMenuActive === true },
+              { 'nav__burger-wrapper--inactive': isMenuActive === false }
             ]"
             @click.stop="handleBurgerClick"
           >
@@ -155,7 +155,7 @@ export default {
   },
   data() {
     return {
-      burgerMenuActive: undefined,
+      isMenuActive: undefined,
       heroLogoInView: undefined,
     }
   },
@@ -166,12 +166,10 @@ export default {
   },
   methods: {
     handleBurgerClick() {
-      this.burgerMenuActive = !this.burgerMenuActive
+      this.isMenuActive = !this.isMenuActive
     },
-    handleLinkClick(e) {
-      if (e.target.classList.contains('nav__link')) {
-        this.burgerMenuActive = false
-      }
+    closeMenu() {
+      this.isMenuActive = false
     },
     checkHeroLogoVisibility(hero) {
       window.addEventListener('scroll', () => {
@@ -217,11 +215,3 @@ export default {
   }
 }
 </script>
-
-<static-query>
-query {
-  metadata {
-    siteName
-  }
-}
-</static-query>
