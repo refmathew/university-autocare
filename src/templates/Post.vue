@@ -24,7 +24,7 @@
               :blog-summary="post.node.summary"
               :blog-date="post.node.date"
               :blog-read-time="post.node.readTime"
-              :blog-feature-img="post.node.featureImg"
+              :blog-feature-img="post.node.featureImg.src"
             ></blog-card>
           </template>
         </div>

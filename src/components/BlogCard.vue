@@ -8,7 +8,7 @@
         <span class="blog-card__read-time">{{ ` ${blogReadTime} min read` }}</span>
       </div>
     </div>
-    <g-image class="blog-card__feature-img" :src="blogFeatureImg.src" alt="Blog feature image" />
+    <g-image class="blog-card__feature-img" :src="blogFeatureImg" alt="Blog feature image" />
   </g-link>
 </template>
 
@@ -24,9 +24,6 @@ export default {
   },
   computed: {
     truncatedSumm() {
-      /*const splittedWords = this.blogSummary.split(' ');
-      let summary = splittedWords.slice(0, 20);
-      summary = summary.join(' ')*/
       return this.blogSummary.slice(0, 150) + '...'
     }
   }
